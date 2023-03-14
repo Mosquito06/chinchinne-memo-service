@@ -12,6 +12,7 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
+// mapper, respository 겸용으로 사용
 @Mapper
 public interface MemoDao extends Repository<Memo, BigInteger>
 {
