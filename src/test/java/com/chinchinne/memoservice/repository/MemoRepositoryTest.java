@@ -27,7 +27,7 @@ public class MemoRepositoryTest
     {
         UserId userId = new UserId("967d6988-a1f0-11ed-a8fc-0242ac120002");
 
-        Memo memo = new Memo(userId, "테스트 입니다.", null, Common.NO);
+        Memo memo = new Memo(userId, "테스트 입니다.", Common.NO, null, Common.NO);
 
         memoRepository.save(memo);
 

@@ -18,4 +18,5 @@ public class MemoDto
     private BigInteger memoId;
     private String userId;
     private String memo;
+    private String completeYn;
 }

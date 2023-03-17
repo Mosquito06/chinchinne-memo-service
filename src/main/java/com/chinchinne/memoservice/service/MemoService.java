@@ -28,7 +28,7 @@ public class MemoService
     @Transactional
     public MemoDto createMemo(MemoDto memoDto)
     {
-        Memo memo = new Memo(new UserId(memoDto.getUserId()), memoDto.getMemo(), Timestamp.valueOf(LocalDateTime.now()), Common.NO);
+        Memo memo = new Memo(new UserId(memoDto.getUserId()), memoDto.getMemo(), Common.NO, Timestamp.valueOf(LocalDateTime.now()), Common.NO);
         memoRepository.save(memo);
 
         return modelMapper.map(memo, MemoDto.class);

@@ -21,6 +21,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/")
@@ -41,11 +42,13 @@ public class MemoController
     }
 
     @GetMapping("/{userId}/memo")
-    public ResponseEntity<List<Memo>> getMemo(@PathVariable String userId)
+    public ResponseEntity<List<MemoDto>> getMemo(@PathVariable String userId)
     {
         Optional<List<Memo>> memo = memoDao.findAll(UserSpecs.UserId(new UserId(userId)).and(UserSpecs.DelYn(Common.NO)));
 
-        return ResponseEntity.status(HttpStatus.OK).body(memo.orElseGet(ArrayList::new));
+        List<MemoDto> res = memo.orElseGet(ArrayList::new).stream().map( m -> modelMapper.map(m, MemoDto.class)).collect(Collectors.toList());
+
+        return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
     @PostMapping("/{userId}/memo")
@@ -57,8 +60,8 @@ public class MemoController
 
         MemoDto memoDto = modelMapper.map(requestMemo, MemoDto.class);
 
-        MemoDto createdMemo = memoService.createMemo(memoDto);
+        MemoDto res = memoService.createMemo(memoDto);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdMemo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(res);
     }
 }
