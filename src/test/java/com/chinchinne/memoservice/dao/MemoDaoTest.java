@@ -3,7 +3,7 @@ package com.chinchinne.memoservice.dao;
 import com.chinchinne.memoservice.annotation.MemoTest;
 import com.chinchinne.memoservice.domain.entity.Memo;
 import com.chinchinne.memoservice.domain.value.UserId;
-import com.chinchinne.memoservice.spec.UserSpecs;
+import com.chinchinne.memoservice.spec.MemoSpecs;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,7 +23,7 @@ public class MemoDaoTest
         //Specification<Memo> spec = new UserIdSpec();
 
         //Optional<List<Memo>> memo =  memoDao.findByUserId(new UserId("967d6988-a1f0-11ed-a8fc-0242ac120002"));
-        Optional<List<Memo>> memo =   memoDao.findAll(UserSpecs.UserId(new UserId("967d6988-a1f0-11ed-a8fc-0242ac120002")));
+        Optional<List<Memo>> memo =   memoDao.findAll(MemoSpecs.UserId(new UserId("967d6988-a1f0-11ed-a8fc-0242ac120002")));
 
         memo.orElseGet(ArrayList::new).forEach( row ->
         {

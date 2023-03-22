@@ -6,18 +6,14 @@ import com.chinchinne.memoservice.domain.value.UserId;
 import com.chinchinne.memoservice.model.Common;
 import com.chinchinne.memoservice.model.MemoDto;
 import com.chinchinne.memoservice.service.MemoService;
-import com.chinchinne.memoservice.spec.UserSpecs;
+import com.chinchinne.memoservice.spec.MemoSpecs;
 import com.chinchinne.memoservice.vo.RequestMemo;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,7 +40,7 @@ public class MemoController
     @GetMapping("/{userId}/memo")
     public ResponseEntity<List<MemoDto>> getMemo(@PathVariable String userId)
     {
-        Optional<List<Memo>> memo = memoDao.findAll(UserSpecs.UserId(new UserId(userId)).and(UserSpecs.DelYn(Common.NO)));
+        Optional<List<Memo>> memo = memoDao.findAll(MemoSpecs.UserId(new UserId(userId)).and(MemoSpecs.DelYn(Common.NO)));
 
         List<MemoDto> res = memo.orElseGet(ArrayList::new).stream().map( m -> modelMapper.map(m, MemoDto.class)).collect(Collectors.toList());
 

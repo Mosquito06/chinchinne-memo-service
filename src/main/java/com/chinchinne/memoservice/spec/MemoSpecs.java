@@ -5,7 +5,7 @@ import com.chinchinne.memoservice.domain.value.UserId;
 import com.chinchinne.memoservice.model.Common;
 import org.springframework.data.jpa.domain.Specification;
 
-public class UserSpecs
+public class MemoSpecs
 {
     public static Specification<Memo> UserId(UserId userId)
     {;
