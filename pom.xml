@@ -73,6 +73,13 @@
             <version>2.3.8</version>
         </dependency>
 
+        <!-- about sleuth -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <!-- about sleuth -->
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
