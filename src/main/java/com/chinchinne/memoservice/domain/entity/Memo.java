@@ -8,7 +8,10 @@ import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import static java.sql.Timestamp.valueOf;
 
 @Entity
 @Getter
@@ -35,6 +38,17 @@ public class Memo
     @Temporal(TemporalType.TIMESTAMP)
     private Date regDate;
 
+    @Column( name = "MOD_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modDate;
+
+    @Embedded
+    @AttributeOverrides
+    (
+        @AttributeOverride( name = "id", column = @Column( name = "MOD_ID"))
+    )
+    private UserId modId;
+
     @Column( name = "DEL_YN")
     private Common delYn;
 
@@ -44,6 +58,27 @@ public class Memo
         this.memo = memo;
         this.completeYn = completeYn;
         this.regDate = regDate;
+        this.delYn = delYn;
+    }
+
+    public void changeMemo( UserId userId, String memo )
+    {
+        this.memo = memo;
+        this.modDate = valueOf(LocalDateTime.now());
+        this.modId = userId;
+    }
+
+    public void changeComplete( UserId userId, Common completeYn )
+    {
+        this.completeYn = completeYn;
+        this.modDate = valueOf(LocalDateTime.now());
+        this.modId = userId;
+    }
+
+    public void removeMemo( UserId userId, Common delYn )
+    {
+        this.modDate = valueOf(LocalDateTime.now());
+        this.modId = userId;
         this.delYn = delYn;
     }
 }

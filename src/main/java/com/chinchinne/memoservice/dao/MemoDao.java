@@ -17,5 +17,5 @@ import java.util.Optional;
 public interface MemoDao extends Repository<Memo, BigInteger>
 {
     Optional<List<Memo>> findByUserId(UserId userId);
-    Optional<List<Memo>> findAll(Specification<Memo> spec);
+
 }

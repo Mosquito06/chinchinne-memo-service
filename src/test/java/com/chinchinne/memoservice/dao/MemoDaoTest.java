@@ -23,12 +23,12 @@ public class MemoDaoTest
         //Specification<Memo> spec = new UserIdSpec();
 
         //Optional<List<Memo>> memo =  memoDao.findByUserId(new UserId("967d6988-a1f0-11ed-a8fc-0242ac120002"));
-        Optional<List<Memo>> memo =   memoDao.findAll(MemoSpecs.UserId(new UserId("967d6988-a1f0-11ed-a8fc-0242ac120002")));
-
-        memo.orElseGet(ArrayList::new).forEach( row ->
-        {
-            System.out.println(row.getMemo());
-        });
+//        Optional<List<Memo>> memo =   memoDao.findAll(MemoSpecs.UserId(new UserId("967d6988-a1f0-11ed-a8fc-0242ac120002")));
+//
+//        memo.orElseGet(ArrayList::new).forEach( row ->
+//        {
+//            System.out.println(row.getMemo());
+//        });
 
     }
 }
