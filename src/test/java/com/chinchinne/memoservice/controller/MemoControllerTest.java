@@ -1,6 +1,7 @@
 package com.chinchinne.memoservice.controller;
 
 import com.chinchinne.memoservice.dao.MemoDao;
+import com.chinchinne.memoservice.repository.MemoRepository;
 import com.chinchinne.memoservice.service.MemoService;
 import com.chinchinne.memoservice.vo.RequestMemo;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,6 +33,9 @@ public class MemoControllerTest
 
     @MockBean
     MemoService memoService;
+
+    @MockBean
+    MemoRepository memoRepository;
 
     @MockBean
     JpaMetamodelMappingContext jpaMetamodelMappingContext;
